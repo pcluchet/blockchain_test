@@ -12,22 +12,6 @@
  * limitations under the License.
  */
 
-/**
- * Access control rules for tutorial-network
- */
- 
-rule Default {
-    description: "Allow all participants access to all resources"
-    participant: "ANY"
-    operation: ALL
-    resource: "org.example.mynetwork.*"
-    action: ALLOW
-}
-
-rule SystemACL {
-  description:  "System ACL to permit all access"
-  participant: "ANY"
-  operation: ALL
-  resource: "org.hyperledger.composer.system.**"
-  action: ALLOW
-}
+export const environment = {
+  production: true
+};

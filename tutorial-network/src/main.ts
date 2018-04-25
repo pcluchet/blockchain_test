@@ -12,22 +12,17 @@
  * limitations under the License.
  */
 
-/**
- * Access control rules for tutorial-network
- */
- 
-rule Default {
-    description: "Allow all participants access to all resources"
-    participant: "ANY"
-    operation: ALL
-    resource: "org.example.mynetwork.*"
-    action: ALLOW
+import './polyfills.ts';
+
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+
+if (environment.production) {
+  enableProdMode();
 }
 
-rule SystemACL {
-  description:  "System ACL to permit all access"
-  participant: "ANY"
-  operation: ALL
-  resource: "org.hyperledger.composer.system.**"
-  action: ALLOW
-}
+platformBrowserDynamic().bootstrapModule(AppModule);
+
